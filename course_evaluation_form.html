@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Evaluation Form</title>
+    <style>
+        /* Add your styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 90px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 9px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1><center>STUDENT COURSE EVALUATION FORM</center></h1>
+    <br>
+    <h2 style="border: 2px solid black"><center></h2style>Core Questions</h2></center></h2>
+    <br>
+    <h3><p style="text-align:center;"><b>Mark each items according to the following scale:<br>
+        SA= Strongly Agree, AG= Agree, UC= Uncertain, DA= Disagree, SD= Strongly Disagree</center></b></p></h3>
+        <br>
+        <form method="post" action="{{ url_for('submit_course_evaluation') }}">
+            <label for="course">Select Course:</label>
+            <select id="course" name="course" required>
+                {% for course in courses %}
+                    <option value="{{ course }}">{{ course }}</option>
+                {% endfor %}
+            </select>
+        
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <br>
+        <form method="post" action="{{ url_for('submit_course_evaluation') }}">
+            <label for="Teacher">Select Teacher:</label>
+            <select id="Teacher" name="Teacher" required>
+                {% for Teacher in Teachers %}
+                    <option value="{{ Teacher }}">{{ Teacher }}</option>
+                {% endfor %}
+            </select>
+        
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+
+
+    <form method="post" action="{{ url_for('submit_course_evaluation') }}">
+    
+       <!-- <h3>COURSE CONTENT AND ORGANIZATION</h3>-->
+        <table>
+            <tr>
+                <th>Course Contant And Organization</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <form action="/submit_feedback" method="post">
+                    <td>The learning outcomes & course objectives were clear<br>
+                        <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    <tr>
+                    <td>The Course workload was manageable</td>
+                     <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+                    <tr>
+                        <td>The Course was well organized (e.g. timely access to materials, notification of changes, etc.)</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                        </tr>
+                </tr>
+                    
+                </tr>
+                    
+                </table>
+
+        <!--<h3>STUDENT CONTRIBUTION</h3>-->
+        <table>
+            <tr>
+                <th> Student Contribution</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <td>You participated actively in the Course</td>
+                <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                <tr>
+                 <td>You think you have made progress in this Course</td>
+                  <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                 <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                </tr>
+                <tr>
+                     <td>Approximate level of your own attendance during the whole Course</td>
+                    <td><input type="checkbox"  name="attandance" value=">25%">
+                     <label for="attandance"> <25% </label></td>
+                     <td><input type="checkbox" name="attandance"  value="26%-50%">
+                     <label for="attandance"> 26% - 50% </label><br></td>
+                     <td><input type="checkbox"  value="51%-75%">
+                     <label for="attandance"> 51%-75%</label></td>
+                     <td><input type="checkbox"  value="75%-90%">
+                     <label for="attandance"> 75%-90%</label> </td>
+                     <td><input type="checkbox"  value="90%-100%">
+                        <label for="attandance"> 90%-100%</label> </td>   
+                    </tr>
+                
+            </tr>
+        </table>
+
+        <!-- Learning Environment and Teaching Methods -->
+        <table>
+            <tr>
+                <th>Learning Environment and Teaching Methods</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <td>You think the Course was well structured to achieve the learning outcomes (there was a good balance of lectures, tutorials, practical etc.)</td>
+                <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                <tr>
+                    <td>The learning and teaching methods encouraged your participation</td>
+                     <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                 </tr>
+                 <tr>
+                        <td>The overall environment in the class was conducive to learning</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+                    <tr>
+                        <td>Classrooms were satisfactory</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+            </tr>
+        </table>
+
+        <!-- LEARNING RESOURCES -->
+        <table>
+            <tr>
+                <th>LEARNING RESOURCES</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <td>Learning materials (Lesson Plans, Course Notes, and handouts etc.) were relevant and useful.</td>
+                <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                </tr>
+                <tr>
+                    <td>Recommended reading Books etc. were relevant and appropriate</td>
+                     <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+                    <tr>
+                        <td>The provision of learning resources in the library was adequate and appropriate</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                        </tr>
+                        <tr>
+                            <td>The provision of online learning resources was adequate and appropriate</td>
+                             <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                            <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                            <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                            <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                            <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                            </tr>
+              </tr>
+        </table>
+
+        <!-- QUALITY OF DELIVERY -->
+        <table>
+            <tr>
+                <th> QUALITY OF DELIVERY</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <td>The Course stimulated your interest and thought on the subject area</td>
+                <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                <tr>
+                    <td>The pace of the Course was appropriate</td>
+                     <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+                    <tr>
+                        <td>Ideas and concepts were presented clearly</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                        </tr>
+            </tr>
+        </table>
+
+        <!--  -->
+        <table>
+            <tr>
+                <th>Assesment</th>
+                <th>SA</th>
+                <th>AG</th>
+                <th>UC</th>
+                <th>DA</th>
+                <th>SD</th>
+            </tr>
+            <tr>
+                <td>The method of assessment were reasonable</td>
+                <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                <tr>
+                    <td>Feedback on assessment was timely</td>
+                     <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                    <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                    <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                    <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                    </tr>
+                    <tr>
+                        <td>Feedback on assessment was helpful</td>
+                         <td><input type="radio" name="clear_outcomes" value="SA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="AG"></td>
+                        <td><input type="radio" name="clear_outcomes" value="UC"></td>
+                        <td><input type="radio" name="clear_outcomes" value="DA"></td>
+                        <td><input type="radio" name="clear_outcomes" value="SD"></td>
+                        </tr>
+            </tr>
+        </table>
+        <p><b>2. Please specify the best feature of Course:<br>
+            <textarea name="Comments" rows="7" cols="70"></textarea>
+  <br><br>
+        </b></p>
+        <p><b>3. The Course could have been improved by<br>
+            <textarea name="Comments" rows="7" cols="70"></textarea>
+  <br><br>
+        </b></p>
+
+        
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
